@@ -1,25 +1,90 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file="/common/taglib.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="home">CNT</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-<div id="navbar" class="navbar navbar-default          ace-save-state">
-    <div class="navbar-container ace-save-state" id="navbar-container">
-        <div class="navbar-header pull-left">
-            <a href="#" class="navbar-brand">
-                <small>
-                    <i class="fa fa-leaf"></i>
-                    Trang quản trị
-                </small>
-            </a>
-        </div>
-        <div class="navbar-buttons navbar-header pull-right collapse navbar-collapse" role="navigation">
-            <ul class="nav ace-nav">
-                <li class="light-blue dropdown-modal">
-                    <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                        Xin chào,[ten nguoi quan tri]
-                    </a>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+      <ul class="navbar-nav m-auto">
+
+        <li class="nav-item">
+          <a class="nav-link" href="${pageContext.request.contextPath}/home">Trang chủ</a>
+        </li>
+
+        <c:if test="${sessionScope.acc == null}">
+          <li class="nav-item">
+            <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
+          </li>
+        </c:if>
+
+        <c:if test="${sessionScope.acc != null}">
+            <c:if test="${sessionScope.acc.isAdmin() == true}">
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/category_manage">Manage Category</a>
                 </li>
-            </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/product_manage">Manage Product</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Manage Account</a>
+                </li>
+            </c:if>
+          <li>
+            <a class="nav-link" href="#">Hello ${sessionScope.acc.user}</a>
+          </li>
+          <li>
+            <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
+          </li>
+        </c:if>
+
+      </ul>
+
+      <form action="search" method="post" class="form-inline my-2 my-lg-0">
+        <div class="input-group input-group-sm">
+          <input name="txt" type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" placeholder="Search...">
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-secondary btn-number">
+              <i class="fa fa-search"></i>
+            </button>
+          </div>
         </div>
+        <a class="btn btn-success btn-sm ml-3" href="show">
+          <i class="fa fa-shopping-cart"></i> Cart
+          <span class="badge badge-light">3</span>
+        </a>
+      </form>
     </div>
-</div>
+  </div>
+</nav>
+<!-- Navigation -->
+<%--<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">--%>
+<%--      <div class="container">--%>
+<%--        <a class="navbar-brand" href="#">Start Bootstrap</a>--%>
+<%--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">--%>
+<%--          <span class="navbar-toggler-icon"></span>--%>
+<%--        </button>--%>
+<%--        <div class="collapse navbar-collapse" id="navbarResponsive">--%>
+<%--          <ul class="navbar-nav ml-auto">--%>
+<%--            <li class="nav-item active">--%>
+<%--              <a class="nav-link" href="#">Trang chủ--%>
+<%--                <span class="sr-only">(current)</span>--%>
+<%--              </a>--%>
+<%--            </li>--%>
+<%--            <li class="nav-item">--%>
+<%--              <a class="nav-link" href="${pageContext.request.contextPath}/login">Đăng nhập--%>
+<%--              </a>--%>
+<%--            </li>--%>
+<%--            <c:if test="${not empty USERMODEL}">--%>
+<%--              <li class="nav-item">--%>
+<%--                <a class="nav-link" href='#'>Wellcome, ${USERMODEL.fullName}</a>--%>
+<%--              </li>--%>
+<%--            </c:if>--%>
+<%--            <c:if test="${empty USERMODEL}">--%>
+
+<%--            </c:if>--%>
+<%--          </ul>--%>
+<%--        </div>--%>
+<%--      </div>--%>
+<%--</nav>--%>

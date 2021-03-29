@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="home">Shoes</a>
+    <a class="navbar-brand" href="home">CNT</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -22,10 +22,10 @@
         <c:if test="${sessionScope.acc != null}">
             <c:if test="${sessionScope.acc.isAdmin() == true}">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Manage Category</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/admin-category_manage">Manage Category</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Manage Product</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/admin/product_manage">Manage Product</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Manage Account</a>
